@@ -190,7 +190,8 @@ const (
 var (
 
 	// Hash tag
-	validHashtag           = regexp.MustCompile(`(?i)(^|[^&` + hashtagAlphaNumericChars + "])(#|\uFF03)(" + hashtagAlphaNumericSet + `*` + hashtagAlphaSet + hashtagAlphaNumericSet + `*)`)
+	//validHashtag           = regexp.MustCompile(`(?i)(^|[^&` + hashtagAlphaNumericChars + "])(#|\uFF03)(" + hashtagAlphaNumericSet + `*` + hashtagAlphaSet + hashtagAlphaNumericSet + `*)`)
+	ValidHashtag           = regexp.MustCompile(`(?i)` + "(#|\uFF03)(" + hashtagAlphaNumericSet + `*` + hashtagAlphaSet + `*` + hashtagAlphaNumericSet + `*)`)
 	invalidHashtagMatchEnd = regexp.MustCompile(`\A(?:[#＃]|://)`)
 	rtlCharacters          = regexp.MustCompile("[\u0600-\u06FF\u0750-\u077F\u0590-\u05FF\uFE70-\uFEFF]")
 
