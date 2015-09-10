@@ -406,13 +406,23 @@ func extractHashtags(text string, checkUrlOverlap bool) []*TwitterEntity {
 	var hashStart int
 	var hashtagStart int
 	var hashtagEnd int
-	for _, match := range validHashtag.FindAllStringSubmatchIndex(text, -1) {
-		if invalidHashtagMatchEnd.MatchString(text[match[1]:]) {
-			continue
-		}
-		hashStart = match[validHashtagGroupHash*2]
-		hashtagStart = match[validHashtagGroupTag*2]
-		hashtagEnd = match[validHashtagGroupTag*2+1]
+	//for _, match := range validHashtag.FindAllStringSubmatchIndex(text, -1) {
+	//	if invalidHashtagMatchEnd.MatchString(text[match[1]:]) {
+	//		continue
+	//	}
+	//	hashStart = match[validHashtagGroupHash*2]
+	//	hashtagStart = match[validHashtagGroupTag*2]
+	//	hashtagEnd = match[validHashtagGroupTag*2+1]
+	for _, match := range ValidHashtag.FindAllStringSubmatchIndex(text, -1) {
+        	//if invalidHashtagMatchEnd.MatchString(text[match[1]:]) {
+        	//  continue
+        	//} 
+        	//hashStart = match[validHashtagGroupHash*2]   //4
+        	//hashtagStart = match[validHashtagGroupTag*2] //6
+        	//hashtagEnd = match[validHashtagGroupTag*2+1] //7
+        	hashStart = match[2]
+        	hashtagStart = match[4]
+        	hashtagEnd = match[5]
 		result = append(result, &TwitterEntity{
 			Text:         text[hashStart:hashtagEnd],
 			hashtag:      text[hashtagStart:hashtagEnd],
